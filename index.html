@@ -28,13 +28,18 @@
             margin: auto;
             overflow: hidden;
         }
-        .about {
+        .about, .publications, .links, .contact {
             background: #f4f4f4;
             padding: 20px;
             border-radius: 5px;
+            margin-bottom: 20px;
         }
-        .links {
-            margin: 20px 0;
+        .publications ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .publications li {
+            margin-bottom: 15px;
         }
         a {
             color: #4CAF50;
@@ -49,19 +54,57 @@
             background: #ddd;
             margin-top: 20px;
         }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
 
 <header>
     <h1>Maorong XIE</h1>
-    <p>Academic Researcher in Immunology</p>
+    <p>Academic Researcher in stem cells and retroviruses</p>
 </header>
 
 <div class="container">
     <section class="about">
         <h2>About Me</h2>
-        <p>Welcome to my personal academic profile page. I am an active researcher in the field of stem cells. My work primarily focuses on human hematopoietic stem cells expansion.</p>
+        <p>Welcome to my personal academic profile page. I am an active researcher in the field of blood stem cell biology. My work primarily focuses on the expansion of human hematopoietic stem cells.</p>
+        <img src="IMG_7296.jpeg" alt="Maorong XIE">
+    </section>
+
+    <section class="publications">
+        <h2>Key Publications</h2>
+        <ul>
+            <li>
+                <strong>Virus-Induced Cell Fusion and Syncytia Formation</strong> <br>
+                Maorong Xie <br>
+                Published in: Syncytia: Origin, Structure, and Functions, 2023 <br>
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-37936-9_14" target="_blank">Read More</a>
+            </li>
+            <li>
+                <strong>Cell-to-cell spreading of HIV-1 in myeloid target cells escapes SAMHD1 restriction</strong> <br>
+                Maorong Xie, Héloïse Leroy, Rémi Mascarau, Marie Woottum, Maeva Dupont, Camille Ciccone, Alain Schmitt,
+                Brigitte Raynaud-Messina, Christel Vérollet, Jérôme Bouchet, Lucie Bracq, Serge Benichou <br>
+                Published in: mBio, 2019 <br>
+                <a href="https://journals.asm.org/doi/full/10.1128/mbio.02457-19" target="_blank">Read More</a>
+            </li>
+            <li>
+                <strong>Mechanisms for cell-to-cell transmission of HIV-1</strong> <br>
+                Lucie Bracq, Maorong Xie, Serge Benichou, Jérôme Bouchet <br>
+                Published in: Frontiers in immunology, 2018 <br>
+                <a href="https://www.frontiersin.org/journals/immunology/articles/10.3389/fimmu.2018.00260/full" target="_blank">Read More</a>
+            </li>
+            <li>
+                <strong>Human cytomegalovirus exploits interferon-induced transmembrane proteins to facilitate morphogenesis of the virion assembly compartment</strong> <br>
+                Maorong Xie, Baoqin Xuan, Jiaoyu Shan, Deng Pan, Yamei Sun, Zhao Shan, Jinping Zhang, Dong Yu, Bin Li, Zhikang Qian <br>
+                Published in: Journal of virology, 2015 <br>
+                <a href="https://journals.asm.org/doi/full/10.1128/jvi.03416-14" target="_blank">Read More</a>
+            </li>
+            <!-- Add more publications as needed -->
+        </ul>
     </section>
 
     <section class="links">
@@ -72,7 +115,7 @@
 
     <section class="contact">
         <h2>Contact</h2>
-        <p>You can reach me via email at: <a href="mailto:[maorong.xie@york.ac.uk]">[maorong.xie@york.ac.uk]</a></p>
+        <p>You can reach me via email at: <a href="mailto:maorong.xie@york.ac.uk">maorong.xie@york.ac.uk</a></p>
     </section>
 </div>
 
