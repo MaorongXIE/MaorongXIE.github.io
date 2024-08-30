@@ -5,13 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maorong XIE - Academic Profile</title>
+    <!-- 引入外部库 -->
+    <script src="https://unpkg.com/scrollreveal"></script> <!-- Scroll Reveal -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Fonts -->
     <style>
+        html {
+            scroll-behavior: smooth; /* 启用平滑滚动 */
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             color: #333;
             line-height: 1.6;
+        }
+        .navbar {
+            position: -webkit-sticky; /* Safari */
+            position: sticky;
+            top: 0;
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: color 0.3s ease; /* 添加过渡效果 */
+        }
+        .navbar a:hover {
+            color: #4CAF50; /* 悬停时改变颜色 */
         }
         header {
             background: #4CAF50;
@@ -28,7 +52,7 @@
             margin: auto;
             overflow: hidden;
         }
-        .about, .publications, .links, .contact {
+        .about, .publications, .links, .contact, .research, .talks, .blog, .resources, .news {
             background: #f4f4f4;
             padding: 20px;
             border-radius: 5px;
@@ -42,10 +66,12 @@
             margin-bottom: 15px;
         }
         a {
-            color: #4CAF50;
+            color: #1E90FF; /* 将链接颜色改为蓝色 */
             text-decoration: none;
+            transition: color 0.3s ease; /* 添加过渡效果 */
         }
         a:hover {
+            color: #333; /* 悬停时改变颜色 */
             text-decoration: underline;
         }
         footer {
@@ -63,57 +89,93 @@
 </head>
 <body>
 
+<!-- 添加粘性导航栏 -->
+<div class="navbar">
+    <a href="#about">About Me</a>
+    <a href="#publications">Publications</a>
+    <a href="#research">Research Projects</a>
+    <a href="#talks">Talks & Conferences</a>
+    <a href="#blog">Academic Blog</a>
+    <a href="#resources">Research Resources</a>
+    <a href="#news">News & Updates</a>
+    <a href="#contact">Contact</a>
+</div>
+
 <header>
     <h1>Maorong XIE</h1>
     <p>Academic Researcher in stem cells and retroviruses</p>
 </header>
 
 <div class="container">
-    <section class="about">
+    <section id="about" class="about">
         <h2>About Me</h2>
         <p>Welcome to my personal academic profile page. I am an active researcher in the field of blood stem cell biology. My work primarily focuses on the expansion of human hematopoietic stem cells.</p>
-        <img src="1fe22cad-e160-43fe-a845-354854b1d67c.jpeg" alt="Maorong XIE">
+        <img src="IMG_7296.jpeg" alt="Maorong XIE">
     </section>
 
-    <section class="publications">
-        <h2>Key Publications</h2>
+    <section id="publications" class="publications">
+        <h2>Featured Publications</h2>
         <ul>
             <li>
                 <strong>Virus-Induced Cell Fusion and Syncytia Formation</strong> <br>
                 Maorong Xie <br>
                 Published in: Syncytia: Origin, Structure, and Functions, 2023 <br>
-                <a href="https://link.springer.com/chapter/10.1007/978-3-031-37936-9_14" target="_blank">Read More</a>
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-37936-9_14" target="_blank">Read More</a> | <a href="papers/Virus-Induced_Cell_Fusion.pdf" download>Download PDF</a>
             </li>
             <li>
                 <strong>Cell-to-cell spreading of HIV-1 in myeloid target cells escapes SAMHD1 restriction</strong> <br>
-                Maorong Xie, Héloïse Leroy, Rémi Mascarau, Marie Woottum, Maeva Dupont, Camille Ciccone, Alain Schmitt,
-                Brigitte Raynaud-Messina, Christel Vérollet, Jérôme Bouchet, Lucie Bracq, Serge Benichou <br>
+                Maorong Xie, Héloïse Leroy, et al. <br>
                 Published in: mBio, 2019 <br>
-                <a href="https://journals.asm.org/doi/full/10.1128/mbio.02457-19" target="_blank">Read More</a>
-            </li>
-            <li>
-                <strong>Mechanisms for cell-to-cell transmission of HIV-1</strong> <br>
-                Lucie Bracq, Maorong Xie, Serge Benichou, Jérôme Bouchet <br>
-                Published in: Frontiers in immunology, 2018 <br>
-                <a href="https://www.frontiersin.org/journals/immunology/articles/10.3389/fimmu.2018.00260/full" target="_blank">Read More</a>
-            </li>
-            <li>
-                <strong>Human cytomegalovirus exploits interferon-induced transmembrane proteins to facilitate morphogenesis of the virion assembly compartment</strong> <br>
-                Maorong Xie, Baoqin Xuan, Jiaoyu Shan, Deng Pan, Yamei Sun, Zhao Shan, Jinping Zhang, Dong Yu, Bin Li, Zhikang Qian <br>
-                Published in: Journal of virology, 2015 <br>
-                <a href="https://journals.asm.org/doi/full/10.1128/jvi.03416-14" target="_blank">Read More</a>
+                <a href="https://journals.asm.org/doi/full/10.1128/mbio.02457-19" target="_blank">Read More</a> | <a href="papers/Cell-to-cell_HIV_Spreading.pdf" download>Download PDF</a>
             </li>
             <!-- Add more publications as needed -->
         </ul>
     </section>
 
-    <section class="links">
-        <h2>My Work</h2>
-        <p>Explore my publications and research contributions on my Google Scholar profile:</p>
-        <p><a href="https://scholar.google.com/citations?user=zwRy9XMAAAAJ&hl=en&authuser=1" target="_blank">Visit my Google Scholar Profile</a></p>
+    <!-- 研究项目展示 Section -->
+    <section id="research" class="research">
+        <h2>Research Projects</h2>
+        <ul>
+            <li>
+                <strong>HIV-1 cell-to-cell transfer and viral dissemination in myeloid cells</strong> - Most enveloped viruses encode viral fusion proteins to penetrate host cells via membrane fusion. Interestingly, many enveloped viruses, such as HIV-1 and SARS-CoV-2, can also use these viral fusion proteins to induce cell-cell fusion, both in vitro and in vivo, leading to the formation of syncytia or multinucleated giant cells (MGCs). Virus cell-to-cell spread through inducing cell-cell fusion may overcome entry and post-entry blocks in target cells and allow evasion of neutralizing antibodies.
+            </li>
+            <li>
+                <strong>HIV-1 Vpr antagonises Interferon by suppressing STAT nuclear transport.</strong> - Viruses have evolved various strategies to evade the host's innate immune response, one of which is incorporating viral proteins into virions to antagonize these immune responses and support efficient viral replication. HCMV incorporates several viral proteins, such as pUL83 (pp65) and the UL26 tegument protein, to target various stages of the IFN signaling pathway, effectively dampening the host's antiviral response(Abate et al., 2004; Ciesla et al., 2024; Munger et al., 2006). Similarly, the Ebola virus incorporates viral proteins like VP35 and VP24 to strategically inhibit the host's IFN response(Messaoudi et al., 2015; Xu et al., 2014). With respect to HIV-1, Vpr is the only accessory protein that is incorporated into virions. We found that HIV-1 Vpr can directly antagonise IFN by targeting the STAT proteins activated by IFN signaling.
+            </li>
+        </ul>
     </section>
 
-    <section class="contact">
+    <!-- 讲座和会议 Section -->
+    <section id="talks" class="talks">
+        <h2>Talks & Conferences</h2>
+        <p>List of notable talks and conferences where I have presented my research:</p>
+        <ul>
+            <li><strong>Retroviruses 2023, Cold Spring Harbor, New York, May 2023</strong> - "HIV-1 Vpr antagonises interferon by suppressing STAT nuclear transport"</li>
+            <li><strong>Evolving Concepts in HIV and Emerging Viral Infections, Miami Winter Symposium 2019</strong> - "HIV-1 cell-to-cell fusion mediates productive infection of macrophages and dendritic cells by both macrophage- and non-macrophage-tropic viruses."</li>
+        </ul>
+    </section>
+
+    <!-- 学术博客 Section -->
+    <section id="blog" class="blog">
+        <h2>Academic Blog</h2>
+        <p>Read my latest blog posts on various research topics, methodologies, and my experiences in the academic world:</p>
+        <ul>
+            <li><strong>Understanding Retroviruses</strong> - A deep dive into retrovirus biology and research methodologies. <a href="#">Read More</a></li>
+            <li><strong>Challenges in Stem Cell Research</strong> - Overcoming obstacles and pushing the boundaries of science. <a href="#">Read More</a></li>
+        </ul>
+    </section>
+
+    <!-- 新闻和更新 Section -->
+    <section id="news" class="news">
+        <h2>News & Updates</h2>
+        <p>Stay up-to-date with my latest research news, upcoming talks, and publications:</p>
+        <ul>
+            <li><strong>May 2024</strong> - Moving to University of York.</li>
+            <li><strong>May 2023</strong> - Poster presentation at the International Retrovirus Conference 2023.</li>
+        </ul>
+    </section>
+
+    <section id="contact" class="contact">
         <h2>Contact</h2>
         <p>You can reach me via email at: <a href="mailto:maorong.xie@york.ac.uk">maorong.xie@york.ac.uk</a></p>
     </section>
@@ -122,6 +184,27 @@
 <footer>
     <p>© 2024 Maorong XIE. All rights reserved.</p>
 </footer>
+
+<!-- 打字机效果的脚本 -->
+<script>
+    const text = "Welcome to My Personal Website!";
+    let index = 0;
+    function typeEffect() {
+        if (index < text.length) {
+            document.querySelector("header h1").innerHTML += text.charAt(index);
+            index++;
+            setTimeout(typeEffect, 100); // 控制打字速度
+        }
+    }
+    window.onload = typeEffect; // 当页面加载时执行
+</script>
+
+<!-- 初始化ScrollReveal -->
+<script>
+    ScrollReveal().reveal('.about, .publications, .research, .talks, .blog, .resources, .news, .contact', {
+        delay: 200, distance: '50px', origin: 'bottom', duration: 1000
+    });
+</script>
 
 </body>
 </html>
