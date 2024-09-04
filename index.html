@@ -11,51 +11,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"> <!-- Google Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- FontAwesome for Icons -->
     <style>
-        html, body {
+        /* 全局样式 */
+        body {
             margin: 0;
             padding: 0;
             font-family: 'Roboto', sans-serif;
             color: #333;
             scroll-behavior: smooth;
-            background-color: #f9fbfc; /* 更清新的背景颜色 */
+            background-color: #f4f4f4;
+            line-height: 1.6;
         }
 
-        body {
-            overflow-x: hidden;
+        a {
+            color: #1e90ff;
+            text-decoration: none;
         }
 
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        /* 导航栏样式 */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background: white;
-            padding: 15px 0;
+            background-color: #1e90ff;
+            padding: 10px 0;
             text-align: center;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease; /* 添加滚动效果 */
-        }
-
-        .navbar.shrink {
-            padding: 10px 0; /* 滚动时缩小 */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .navbar a {
-            color: #333;
-            padding: 0 20px;
-            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
             font-weight: 500;
             transition: color 0.3s ease;
         }
 
         .navbar a:hover {
-            color: #1e90ff;
+            color: #ffdd57;
         }
 
+        /* 头部样式 */
         header {
-            height: 100vh;
-            background: url('IMG_5782.tiff') no-repeat center center/cover; /* 使用你的图片替代 */
+            height: 70vh;
+            background: url('IMG_5782.jpeg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -63,8 +71,6 @@
             text-align: center;
             color: white;
             position: relative;
-            z-index: 1;
-            overflow: hidden;
         }
 
         header::before {
@@ -74,85 +80,70 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* 添加暗色遮罩以提高可读性 */
+            background: rgba(0, 0, 0, 0.5); /* 添加暗色遮罩 */
             z-index: -1;
         }
 
         header h1 {
-            font-size: 48px;
+            font-size: 56px;
             font-weight: 700;
             margin: 0;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
         }
 
         header p {
             font-size: 24px;
             font-weight: 300;
             margin: 10px 0;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
         }
 
-        .container {
-            width: 90%;
-            margin: 60px auto;
-            max-width: 1200px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background-color: white;
-            padding: 25px;
-            border-radius: 10px;
+        /* 主要内容样式 */
+        .section {
+            padding: 60px 20px;
+            background-color: #fff;
+            margin-bottom: 20px;
+            border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        .card h2 {
+        .section h2 {
+            font-size: 30px;
             color: #1e90ff;
-            font-size: 24px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
-        .card p, .card ul {
+        .section p, .section ul {
+            font-size: 18px;
             color: #555;
-            line-height: 1.6;
         }
 
-        .card ul {
-            list-style: none;
+        .section ul {
+            list-style-type: none;
             padding: 0;
         }
 
-        .card ul li {
+        .section ul li {
             margin: 10px 0;
         }
 
-        .card ul li a {
+        .section ul li a {
             color: #1e90ff;
-            text-decoration: none;
         }
 
-        .card ul li a:hover {
+        .section ul li a:hover {
             text-decoration: underline;
         }
 
+        /* 页脚样式 */
         footer {
             text-align: center;
-            padding: 40px 0;
+            padding: 20px 0;
             background: #333;
             color: white;
-            margin-top: 40px;
+            margin-top: 20px;
         }
 
         footer a {
-            color: #1e90ff;
+            color: #ffdd57;
             text-decoration: none;
         }
 
@@ -167,9 +158,10 @@
         }
 
         .social-icons a:hover {
-            color: #1e90ff;
+            color: #ffdd57;
         }
 
+        /* 动画效果 */
         .fade-in {
             opacity: 0;
             transition: opacity 1s ease-in;
@@ -179,36 +171,13 @@
             opacity: 1;
         }
 
-        .news-list, .talks-list {
-            padding: 0;
-            margin: 0;
-            list-style: none;
-        }
-
-        .news-item, .talk-item {
-            background-color: #fff;
-            border-left: 4px solid #1e90ff;
-            margin-bottom: 20px;
-            padding: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .news-item h3, .talk-item h3 {
-            margin: 0 0 10px;
-            color: #1e90ff;
-        }
-
-        .news-item p, .talk-item p {
-            margin: 0;
-            color: #666;
-        }
     </style>
 </head>
 
 <body>
 
 <!-- 导航栏 -->
-<div class="navbar" id="navbar">
+<div class="navbar">
     <a href="#about">About</a>
     <a href="#publications">Publications</a>
     <a href="#research">Research</a>
@@ -217,29 +186,27 @@
     <a href="#contact">Contact</a>
 </div>
 
-<!-- 全屏背景头部 -->
+<!-- 头部部分 -->
 <header>
     <h1>Maorong XIE</h1>
     <p>Researcher in Stem Cells and Retroviruses</p>
 </header>
 
-<!-- 内容容器 -->
+<!-- 关于我部分 -->
 <div class="container">
-
-    <!-- 关于我部分 -->
-    <div class="card fade-in">
+    <div class="section fade-in" id="about">
         <h2>About Me</h2>
         <p>I am an active researcher in the field of blood stem cell biology. My work primarily focuses on the expansion of human hematopoietic stem cells and understanding retrovirus behaviors. I am passionate about exploring innovative solutions in biomedical science.</p>
     </div>
 
-    <!-- 研究项目展示部分 -->
-    <div class="card fade-in">
+    <!-- 研究项目部分 -->
+    <div class="section fade-in" id="research">
         <h2>Research Projects</h2>
         <p>My research is centered around stem cell biology and virology. I explore how hematopoietic stem cells can be manipulated for better therapeutic outcomes and study retroviruses for better understanding of their pathogenesis.</p>
     </div>
 
     <!-- 发表论文部分 -->
-    <div class="card fade-in">
+    <div class="section fade-in" id="publications">
         <h2>Key Publications</h2>
         <ul>
             <li><strong>Virus-Induced Cell Fusion and Syncytia Formation</strong> - <a href="https://link.springer.com/chapter/10.1007/978-3-031-37936-9_14" target="_blank">Read More</a></li>
@@ -250,51 +217,37 @@
     </div>
 
     <!-- 讲座和会议部分 -->
-    <div class="card fade-in" id="talks">
+    <div class="section fade-in" id="talks">
         <h2>Talks & Conferences</h2>
-        <ul class="talks-list">
-            <li class="talk-item">
-                <h3>Retroviruses 2023, Cold Spring Harbor, New York, May 2023</h3>
-                <p>HIV-1 Vpr antagonises interferon by suppressing STAT nuclear transport.</p>
-            </li>
-            <li class="talk-item">
-                <h3>Evolving Concepts in HIV and Emerging Viral Infections, Miami Winter Symposium 2019</h3>
-                <p>HIV-1 cell-to-cell fusion mediates productive infection of macrophages and dendritic cells by both macrophage- and non-macrophage-tropic viruses.</p>
-            </li>
-            <!-- 添加更多讲座项目 -->
+        <ul>
+            <li><strong>Retroviruses 2023, Cold Spring Harbor, New York, May 2023</strong><br>
+                HIV-1 Vpr antagonises interferon by suppressing STAT nuclear transport.</li>
+            <li><strong>Evolving Concepts in HIV and Emerging Viral Infections, Miami Winter Symposium 2019</strong><br>
+                HIV-1 cell-to-cell fusion mediates productive infection of macrophages and dendritic cells by both macrophage- and non-macrophage-tropic viruses.</li>
         </ul>
     </div>
 
     <!-- 新闻和更新部分 -->
-    <div class="card fade-in" id="news">
+    <div class="section fade-in" id="news">
         <h2>News and Updates</h2>
-        <ul class="news-list">
-            <li class="news-item">
-                <h3>May 2024</h3>
-                <p>Moving to University of York.</p>
-            </li>
-            <li class="news-item">
-                <h3>CSHL Retroviruses 2023</h3>
-                <p>May 2023 - Poster presentation at the International Retrovirus Conference 2023.</p>
-            </li>
-            <!-- 添加更多新闻项目 -->
+        <ul>
+            <li><strong>May 2024</strong> - Moving to University of York.</li>
+            <li><strong>CSHL Retroviruses 2023</strong> - May 2023 - Poster presentation at the International Retrovirus Conference 2023.</li>
         </ul>
     </div>
 
     <!-- 联系部分 -->
-    <div class="card fade-in" id="contact">
+    <div class="section fade-in" id="contact">
         <h2>Contact</h2>
         <p>If you'd like to collaborate or have any inquiries, feel free to reach out:</p>
         <p><a href="mailto:maorong.xie@york.ac.uk">maorong.xie@york.ac.uk</a></p>
     </div>
-
 </div>
 
 <!-- 页脚 -->
 <footer>
     <p>© 2024 Maorong XIE. All rights reserved.</p>
     <div class="social-icons">
-        <a href="https://www.semanticscholar.org/author/Maorong-Xie/4567632" target="_blank"><i class="fab fa-linkedin"></i></a>
         <a href="https://scholar.google.com/citations?user=zwRy9XMAAAAJ&hl=en&authuser=1" target="_blank"><i class="fas fa-graduation-cap"></i></a>
     </div>
 </footer>
@@ -304,17 +257,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         const elements = document.querySelectorAll('.fade-in');
         elements.forEach((el) => {
-            el.classList.add('visible'); // 在页面加载时显示所有内容
-        });
-
-        // 导航栏缩小效果
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', function () {
-            if (window.scrollY > 50) {
-                navbar.classList.add('shrink');
-            } else {
-                navbar.classList.remove('shrink');
-            }
+            el.classList.add('visible');
         });
     });
 </script>
