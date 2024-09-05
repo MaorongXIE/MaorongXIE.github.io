@@ -14,13 +14,19 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             color: #333;
             scroll-behavior: smooth;
-            background-color: #f4f4f4;
+             
             line-height: 1.6;
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         a {
             color: #1e90ff;
             text-decoration: none;
@@ -38,17 +44,13 @@
 
         /* 折叠导航栏样式 */
         .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #1e90ff;
+            background-color: #111;
+            color: #fff;
             padding: 10px;
-            text-align: center;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .navbar .menu-toggle {
@@ -82,12 +84,12 @@
             .navbar-menu {
                 display: none;
                 flex-direction: column;
-                width: 100%;
-                background-color: #1e90ff;
+                background-color: #000000;
                 position: absolute;
-                top: 100%;
-                left: 0;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                top: 50px;
+                right: 0;
+                width: 100%;
+                text-align: center;
             }
 
             .navbar-menu.show {
@@ -102,7 +104,7 @@
         /* 头部样式 */
         header {
             height: 70vh;
-            background: url('IMG_5782.tiff') no-repeat center center/cover;
+            background: url('IMG_5782.jpeg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -201,6 +203,40 @@
             color: #ffdd57;
         }
 
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .search-bar input {
+            border: none;
+            padding: 5px;
+            outline: none;
+        }
+
+        .search-bar button {
+            background-color: #e74c3c;
+            border: none;
+            padding: 5px 10px;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .navbar-brand {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
     </style>
 </head>
 
@@ -208,8 +244,14 @@
 
 <!-- 折叠导航栏 -->
 <div class="navbar">
+    <div class="navbar-brand">Maorong Xie</div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search...">
+        <button type="button"><i class="fas fa-search"></i></button>
+    </div>
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <div class="navbar-menu">
+        
         <a href="#about">About</a>
         <a href="#publications">Publications</a>
         <a href="#research">Research</a>
@@ -218,7 +260,7 @@
         <a href="#contact">Contact</a>
     </div>
 </div>
-
+<!-- 我是你爹 -->
 <!-- 头部部分 -->
 <header>
     <h1>Maorong XIE</h1>
