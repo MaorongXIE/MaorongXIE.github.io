@@ -1,50 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maorong XIE - Academic Profile</title>
-    <!-- 引入外部库 -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Maorong Xie - Personal Webpage</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style>
-        /* 全局样式 */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            scroll-behavior: smooth;
-             
-            line-height: 1.6;
-        }
-
+        /* 样式重置 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        a {
-            color: #1e90ff;
-            text-decoration: none;
-        }
 
-        a:hover {
-            text-decoration: underline;
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
         }
 
         .container {
-            width: 90%;
+            width: 80%;
             margin: 0 auto;
-            max-width: 1200px;
+            padding: 20px;
         }
 
-        /* 折叠导航栏样式 */
+        /* 导航栏样式 */
         .navbar {
-            background-color: #111;
+            background-color: #1e90ff;
             color: #fff;
             padding: 10px;
             display: flex;
@@ -53,58 +38,98 @@
             position: relative;
         }
 
-        .navbar .menu-toggle {
-            display: none;
-            font-size: 24px;
-            color: white;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-
-        .navbar a {
-            color: white;
-            padding: 10px 15px;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            text-decoration: none;
-        }
-
-        .navbar a:hover {
-            color: #ffdd57;
+        .navbar-brand {
+            font-size: 1.5em;
+            font-weight: bold;
         }
 
         .navbar-menu {
             display: flex;
-            gap: 10px;
+            align-items: center;
         }
 
-        /* 在小屏幕上隐藏菜单，使用折叠 */
+        .navbar-menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            margin: 0 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-menu a:hover {
+            background-color: #333;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .search-bar input {
+            border: none;
+            padding: 5px;
+            outline: none;
+        }
+
+        .search-bar button {
+            background-color: #e74c3c;
+            border: none;
+            padding: 5px 10px;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .navbar-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-icons a {
+            color: #fff;
+            margin-left: 10px;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-icons a:hover {
+            color: #333;
+        }
+
         @media (max-width: 768px) {
             .navbar-menu {
                 display: none;
                 flex-direction: column;
-                background-color: #000000;
+                background-color: #1e90ff;
                 position: absolute;
                 top: 50px;
                 right: 0;
                 width: 100%;
-                text-align: center;
+                text-align: right;
             }
 
             .navbar-menu.show {
                 display: flex;
             }
 
-            .navbar .menu-toggle {
+            .hamburger {
                 display: block;
             }
         }
 
-        /* 头部样式 */
         header {
             height: 70vh;
-            background: url('IMG_5782.tiff') no-repeat center center/cover;
+            background: url('IMG_5782.jpeg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -137,7 +162,6 @@
             margin: 10px 0;
         }
 
-        /* 主要内容样式 */
         .section {
             padding: 60px 20px;
             background-color: #fff;
@@ -175,83 +199,49 @@
             text-decoration: underline;
         }
 
-        /* 页脚样式 */
         footer {
             text-align: center;
             padding: 20px 0;
-            background: #333;
-            color: white;
-            margin-top: 20px;
-        }
-
-        footer a {
-            color: #ffdd57;
-            text-decoration: none;
-        }
-
-        footer a:hover {
+            background-color: #111;
             color: #fff;
+            margin-top: 40px;
         }
 
-        .social-icons a {
-            color: white;
-            margin: 0 15px;
-            font-size: 24px;
-        }
-
-        .social-icons a:hover {
-            color: #ffdd57;
-        }
-
-        .search-bar {
+        /* 回到顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1e90ff;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
-            background-color: #fff;
-            border-radius: 5px;
-            padding: 5px;
-        }
-
-        .search-bar input {
-            border: none;
-            padding: 5px;
-            outline: none;
-        }
-
-        .search-bar button {
-            background-color: #e74c3c;
-            border: none;
-            padding: 5px 10px;
-            color: #fff;
+            justify-content: center;
+            font-size: 24px;
             cursor: pointer;
-            border-radius: 0 5px 5px 0;
+            transition: background-color 0.3s ease;
         }
 
-        .hamburger {
-            display: none;
-            font-size: 1.5em;
-            cursor: pointer;
+        .back-to-top:hover {
+            background-color: #555;
         }
-
-        .navbar-brand {
-            font-size: 1.5em;
-            font-weight: bold;
-        }
-
     </style>
 </head>
-
 <body>
 
-<!-- 折叠导航栏 -->
-<div class="navbar">
+<!-- 导航栏 -->
+<nav class="navbar">
     <div class="navbar-brand">Maorong Xie</div>
-    <div class="search-bar">
-        <input type="text" placeholder="Search...">
-        <button type="button"><i class="fas fa-search"></i></button>
-    </div>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <form id="searchForm" class="search-bar" onsubmit="performSearch(event)">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button type="submit"><i class="fas fa-search"></i></button>
+    </form>
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
     <div class="navbar-menu">
-        
         <a href="#about">About</a>
         <a href="#publications">Publications</a>
         <a href="#research">Research</a>
@@ -259,30 +249,35 @@
         <a href="#news">News</a>
         <a href="#contact">Contact</a>
     </div>
-</div>
-<!-- 我是你爹 -->
+    <div class="navbar-icons">
+        <a href="https://scholar.google.com/citations?user=zwRy9XMAAAAJ&hl=en" target="_blank" title="Google Scholar">
+            <i class="fas fa-graduation-cap"></i>
+        </a>
+    </div>
+</nav>
+
 <!-- 头部部分 -->
 <header>
-    <h1>Maorong XIE</h1>
+    <h1>Maorong Xie</h1>
     <p>Researcher in Stem Cells and Retroviruses</p>
 </header>
 
 <!-- 内容部分 -->
 <div class="container">
     <!-- 关于我部分 -->
-    <div class="section fade-in" id="about">
+    <div class="section" id="about">
         <h2>About Me</h2>
         <p>I am an active researcher in the field of blood stem cell biology. My work primarily focuses on the expansion of human hematopoietic stem cells and understanding retrovirus behaviors. I am passionate about exploring innovative solutions in biomedical science.</p>
     </div>
 
     <!-- 研究项目部分 -->
-    <div class="section fade-in" id="research">
+    <div class="section" id="research">
         <h2>Research Projects</h2>
         <p>My research is centered around stem cell biology and virology. I explore how hematopoietic stem cells can be manipulated for better therapeutic outcomes and study retroviruses for better understanding of their pathogenesis.</p>
     </div>
 
     <!-- 发表论文部分 -->
-    <div class="section fade-in" id="publications">
+    <div class="section" id="publications">
         <h2>Key Publications</h2>
         <ul>
             <li><strong>Virus-Induced Cell Fusion and Syncytia Formation</strong> - <a href="https://link.springer.com/chapter/10.1007/978-3-031-37936-9_14" target="_blank">Read More</a></li>
@@ -293,7 +288,7 @@
     </div>
 
     <!-- 讲座和会议部分 -->
-    <div class="section fade-in" id="talks">
+    <div class="section" id="talks">
         <h2>Talks & Conferences</h2>
         <ul>
             <li><strong>Retroviruses 2023, Cold Spring Harbor, New York, May 2023</strong><br>
@@ -304,7 +299,7 @@
     </div>
 
     <!-- 新闻和更新部分 -->
-    <div class="section fade-in" id="news">
+    <div class="section" id="news">
         <h2>News and Updates</h2>
         <ul>
             <li><strong>May 2024</strong> - Moving to University of York.</li>
@@ -313,7 +308,7 @@
     </div>
 
     <!-- 联系部分 -->
-    <div class="section fade-in" id="contact">
+    <div class="section" id="contact">
         <h2>Contact</h2>
         <p>If you'd like to collaborate or have any inquiries, feel free to reach out:</p>
         <p><a href="mailto:maorong.xie@york.ac.uk">maorong.xie@york.ac.uk</a></p>
@@ -322,19 +317,53 @@
 
 <!-- 页脚 -->
 <footer>
-    <p>© 2024 Maorong XIE. All rights reserved.</p>
-    <div class="social-icons">
-        <a href="https://scholar.google.com/citations?user=zwRy9XMAAAAJ&hl=en&authuser=1" target="_blank"><i class="fas fa-graduation-cap"></i></a>
-    </div>
+    <p>© 2024 Maorong Xie. All rights reserved.</p>
 </footer>
 
-<!-- JavaScript 代码 -->
+<!-- 回到顶部按钮 -->
+<button class="back-to-top" onclick="scrollToTop()">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- JavaScript -->
 <script>
-    // 折叠导航栏效果
+    // 折叠导航栏切换功能
     function toggleMenu() {
         const menu = document.querySelector('.navbar-menu');
         menu.classList.toggle('show');
     }
+
+    // 搜索功能
+    function performSearch(event) {
+        event.preventDefault(); // 防止表单提交
+
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const sections = document.querySelectorAll('.section');
+
+        sections.forEach(section => {
+            const text = section.textContent.toLowerCase();
+            if (text.includes(query)) {
+                section.style.display = 'block'; // 显示匹配的内容
+            } else {
+                section.style.display = 'none'; // 隐藏不匹配的内容
+            }
+        });
+    }
+
+    // 回到顶部功能
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 显示/隐藏回到顶部按钮
+    window.addEventListener('scroll', () => {
+        const button = document.querySelector('.back-to-top');
+        if (window.scrollY > 300) {
+            button.style.display = 'block';
+        } else {
+            button.style.display = 'none';
+        }
+    });
 </script>
 
 </body>
