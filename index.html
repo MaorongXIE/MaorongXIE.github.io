@@ -22,7 +22,8 @@
         }
 
         .container {
-            width: 80%;
+            width: 90%;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -31,7 +32,7 @@
         .navbar {
             background-color: #1e90ff;
             color: #fff;
-            padding: 10px;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -43,49 +44,44 @@
             font-weight: bold;
         }
 
-        .navbar-menu, .search-bar {
+        .navbar-menu {
             display: flex;
             align-items: center;
         }
 
-        .navbar-menu a, .navbar-icons a {
+        .navbar-menu a {
             color: #fff;
             text-decoration: none;
             padding: 8px 15px;
             margin: 0 5px;
             font-weight: 500;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color 0.3s ease;
         }
 
-        .navbar-menu a:hover, .navbar-icons a:hover {
+        .navbar-menu a:hover {
             background-color: #333;
-        }
-
-        .search-bar {
-            background-color: #fff;
-            border-radius: 5px;
-            padding: 5px;
-        }
-
-        .search-bar input {
-            border: none;
-            padding: 5px;
-            outline: none;
-        }
-
-        .search-bar button {
-            background-color: #e74c3c;
-            border: none;
-            padding: 5px 10px;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 0 5px 5px 0;
         }
 
         .hamburger {
             display: none;
             font-size: 1.5em;
             cursor: pointer;
+        }
+
+        .navbar-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-icons a {
+            color: #fff;
+            margin-left: 10px;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-icons a:hover {
+            color: #333;
         }
 
         @media (max-width: 768px) {
@@ -98,6 +94,7 @@
                 right: 0;
                 width: 100%;
                 text-align: right;
+                padding: 10px 0;
             }
 
             .navbar-menu.show {
@@ -109,13 +106,13 @@
             }
 
             .search-bar {
-                margin-top: 10px;
+                display: none; /* 在小屏幕上隐藏搜索栏 */
             }
         }
 
         header {
-            height: 70vh;
-            background: url('IMG_5782.tiff') no-repeat center center/cover;
+            height: 50vh;
+            background: url('IMG_5782.jpeg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -137,18 +134,19 @@
         }
 
         header h1 {
-            font-size: 56px;
+            font-size: 2.5em;
             font-weight: 700;
+            margin: 0;
         }
 
         header p {
-            font-size: 24px;
+            font-size: 1.2em;
             font-weight: 300;
             margin: 10px 0;
         }
 
         .section {
-            padding: 60px 20px;
+            padding: 40px 20px;
             background-color: #fff;
             margin-bottom: 20px;
             border-radius: 8px;
@@ -156,14 +154,14 @@
         }
 
         .section h2 {
-            font-size: 30px;
+            font-size: 2em;
             color: #1e90ff;
             margin-bottom: 20px;
         }
 
         .section p,
         .section ul {
-            font-size: 18px;
+            font-size: 1em;
             color: #555;
         }
 
@@ -209,11 +207,7 @@
             font-size: 24px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            display: none;
-        }
-
-        .back-to-top.show {
-            display: flex;
+            display: none; /* 默认隐藏 */
         }
 
         .back-to-top:hover {
@@ -226,11 +220,7 @@
 <!-- 导航栏 -->
 <nav class="navbar">
     <div class="navbar-brand">Maorong Xie</div>
-    <form id="searchForm" class="search-bar" onsubmit="performSearch(event)">
-        <input type="text" id="searchInput" placeholder="Search...">
-        <button type="submit"><i class="fas fa-search"></i></button>
-    </form>
-    <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle Navigation">&#9776;</div>
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
     <div class="navbar-menu">
         <a href="#about">About</a>
         <a href="#publications">Publications</a>
@@ -311,20 +301,21 @@
 </footer>
 
 <!-- 回到顶部按钮 -->
-<button class="back-to-top" onclick="scrollToTop()" aria-label="Back to Top">
+<button class="back-to-top" onclick="scrollToTop()">
     <i class="fas fa-chevron-up"></i>
 </button>
 
 <!-- JavaScript -->
 <script>
     // 折叠导航栏切换功能
-    document.querySelector('.hamburger').addEventListener('click', function () {
-        document.querySelector('.navbar-menu').classList.toggle('show');
-    });
+    function toggleMenu() {
+        const menu = document.querySelector('.navbar-menu');
+        menu.classList.toggle('show');
+    }
 
     // 搜索功能
-    document.getElementById('searchForm').addEventListener('submit', function (event) {
-        event.preventDefault();
+    function performSearch(event) {
+        event.preventDefault(); // 防止表单提交
 
         const query = document.getElementById('searchInput').value.toLowerCase();
         const sections = document.querySelectorAll('.section');
@@ -332,12 +323,12 @@
         sections.forEach(section => {
             const text = section.textContent.toLowerCase();
             if (text.includes(query)) {
-                section.classList.add('highlight');
+                section.style.display = 'block'; // 显示匹配的内容
             } else {
-                section.classList.remove('highlight');
+                section.style.display = 'none'; // 隐藏不匹配的内容
             }
         });
-    });
+    }
 
     // 回到顶部功能
     function scrollToTop() {
@@ -348,9 +339,9 @@
     window.addEventListener('scroll', () => {
         const button = document.querySelector('.back-to-top');
         if (window.scrollY > 300) {
-            button.classList.add('show');
+            button.style.display = 'block';
         } else {
-            button.classList.remove('show');
+            button.style.display = 'none';
         }
     });
 </script>
