@@ -43,27 +43,25 @@
             font-weight: bold;
         }
 
-        .navbar-menu {
+        .navbar-menu, .search-bar {
             display: flex;
             align-items: center;
         }
 
-        .navbar-menu a {
+        .navbar-menu a, .navbar-icons a {
             color: #fff;
             text-decoration: none;
             padding: 8px 15px;
             margin: 0 5px;
             font-weight: 500;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .navbar-menu a:hover {
+        .navbar-menu a:hover, .navbar-icons a:hover {
             background-color: #333;
         }
 
         .search-bar {
-            display: flex;
-            align-items: center;
             background-color: #fff;
             border-radius: 5px;
             padding: 5px;
@@ -90,22 +88,6 @@
             cursor: pointer;
         }
 
-        .navbar-icons {
-            display: flex;
-            align-items: center;
-        }
-
-        .navbar-icons a {
-            color: #fff;
-            margin-left: 10px;
-            font-size: 1.2em;
-            transition: color 0.3s ease;
-        }
-
-        .navbar-icons a:hover {
-            color: #333;
-        }
-
         @media (max-width: 768px) {
             .navbar-menu {
                 display: none;
@@ -125,11 +107,15 @@
             .hamburger {
                 display: block;
             }
+
+            .search-bar {
+                margin-top: 10px;
+            }
         }
 
         header {
             height: 70vh;
-            background: url('IMG_5782.tiff') no-repeat center center/cover;
+            background: url('IMG_5782.jpeg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -153,7 +139,6 @@
         header h1 {
             font-size: 56px;
             font-weight: 700;
-            margin: 0;
         }
 
         header p {
@@ -224,6 +209,11 @@
             font-size: 24px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            display: none;
+        }
+
+        .back-to-top.show {
+            display: flex;
         }
 
         .back-to-top:hover {
@@ -240,7 +230,7 @@
         <input type="text" id="searchInput" placeholder="Search...">
         <button type="submit"><i class="fas fa-search"></i></button>
     </form>
-    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle Navigation">&#9776;</div>
     <div class="navbar-menu">
         <a href="#about">About</a>
         <a href="#publications">Publications</a>
@@ -321,21 +311,20 @@
 </footer>
 
 <!-- 回到顶部按钮 -->
-<button class="back-to-top" onclick="scrollToTop()">
+<button class="back-to-top" onclick="scrollToTop()" aria-label="Back to Top">
     <i class="fas fa-chevron-up"></i>
 </button>
 
 <!-- JavaScript -->
 <script>
     // 折叠导航栏切换功能
-    function toggleMenu() {
-        const menu = document.querySelector('.navbar-menu');
-        menu.classList.toggle('show');
-    }
+    document.querySelector('.hamburger').addEventListener('click', function () {
+        document.querySelector('.navbar-menu').classList.toggle('show');
+    });
 
     // 搜索功能
-    function performSearch(event) {
-        event.preventDefault(); // 防止表单提交
+    document.getElementById('searchForm').addEventListener('submit', function (event) {
+        event.preventDefault();
 
         const query = document.getElementById('searchInput').value.toLowerCase();
         const sections = document.querySelectorAll('.section');
@@ -343,12 +332,12 @@
         sections.forEach(section => {
             const text = section.textContent.toLowerCase();
             if (text.includes(query)) {
-                section.style.display = 'block'; // 显示匹配的内容
+                section.classList.add('highlight');
             } else {
-                section.style.display = 'none'; // 隐藏不匹配的内容
+                section.classList.remove('highlight');
             }
         });
-    }
+    });
 
     // 回到顶部功能
     function scrollToTop() {
@@ -359,9 +348,9 @@
     window.addEventListener('scroll', () => {
         const button = document.querySelector('.back-to-top');
         if (window.scrollY > 300) {
-            button.style.display = 'block';
+            button.classList.add('show');
         } else {
-            button.style.display = 'none';
+            button.classList.remove('show');
         }
     });
 </script>
