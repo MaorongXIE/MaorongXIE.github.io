@@ -104,10 +104,6 @@
             .hamburger {
                 display: block;
             }
-
-            .search-bar {
-                display: none; /* 在小屏幕上隐藏搜索栏 */
-            }
         }
 
         header {
@@ -225,6 +221,7 @@
         <a href="#about">About</a>
         <a href="#publications">Publications</a>
         <a href="#research">Research</a>
+        <a href="#projects">Projects</a> <!-- New Projects Link -->
         <a href="#talks">Talks</a>
         <a href="#news">News</a>
         <a href="#contact">Contact</a>
@@ -247,13 +244,33 @@
     <!-- 关于我部分 -->
     <div class="section" id="about">
         <h2>About Me</h2>
-        <p>I am an active researcher in the field of blood stem cell biology. My work primarily focuses on the expansion of human hematopoietic stem cells and understanding retrovirus behaviors. I am passionate about exploring innovative solutions in biomedical science.</p>
+        <div style="display: flex; align-items: center;">
+            <img src="your-photo.jpg" alt="Maorong Xie" style="width: 150px; height: 150px; border-radius: 50%; margin-right: 20px;">
+            <p>I am an active researcher in the field of blood stem cell biology. My work primarily focuses on the expansion of human hematopoietic stem cells and understanding retrovirus behaviors. I am passionate about exploring innovative solutions in biomedical science.</p>
+        </div>
     </div>
 
     <!-- 研究项目部分 -->
     <div class="section" id="research">
         <h2>Research Projects</h2>
         <p>My research is centered around stem cell biology and virology. I explore how hematopoietic stem cells can be manipulated for better therapeutic outcomes and study retroviruses for better understanding of their pathogenesis.</p>
+    </div>
+
+    <!-- 项目展示部分 -->
+    <div class="section" id="projects">
+        <h2>Projects</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <!-- 项目卡片示例 -->
+            <div style="flex: 1; min-width: 250px; background-color: #e8f4ff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                <h3>HIV-1 cell-to-cell transfer and viral dissemination in myeloid cells</h3>
+                <p>Most enveloped viruses encode viral fusion proteins to penetrate host cells via membrane fusion. Interestingly, many enveloped viruses, such as HIV-1 and SARS-CoV-2, can also use these viral fusion proteins to induce cell-cell fusion, both in vitro and in vivo, leading to the formation of syncytia or multinucleated giant cells (MGCs). Virus cell-to-cell spread through inducing cell-cell fusion may overcome entry and post-entry blocks in target cells and allow evasion of neutralizing antibodies.</p>
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-37936-9_14" target="_blank" style="color: #1e90ff;">Learn More</a>
+                <h3>HIV-1 Vpr antagonises Interferon by suppressing STAT nuclear transport.</h3>
+                <p>Viruses have evolved various strategies to evade the host's innate immune response, one of which is incorporating viral proteins into virions to antagonize these immune responses and support efficient viral replication. HCMV incorporates several viral proteins, such as pUL83 (pp65) and the UL26 tegument protein, to target various stages of the IFN signaling pathway, effectively dampening the host's antiviral response(Abate et al., 2004; Ciesla et al., 2024; Munger et al., 2006). Similarly, the Ebola virus incorporates viral proteins like VP35 and VP24 to strategically inhibit the host's IFN response(Messaoudi et al., 2015; Xu et al., 2014). With respect to HIV-1, Vpr is the only accessory protein that is incorporated into virions. I found that HIV-1 Vpr can directly antagonise IFN by targeting the STAT proteins activated by IFN signaling.</p>
+                <a href="link-to-project-details" target="_blank" style="color: #1e90ff;">Learn More</a>
+            </div>
+            <!-- 可以根据需要添加更多项目卡片 -->
+        </div>
     </div>
 
     <!-- 发表论文部分 -->
@@ -311,23 +328,6 @@
     function toggleMenu() {
         const menu = document.querySelector('.navbar-menu');
         menu.classList.toggle('show');
-    }
-
-    // 搜索功能
-    function performSearch(event) {
-        event.preventDefault(); // 防止表单提交
-
-        const query = document.getElementById('searchInput').value.toLowerCase();
-        const sections = document.querySelectorAll('.section');
-
-        sections.forEach(section => {
-            const text = section.textContent.toLowerCase();
-            if (text.includes(query)) {
-                section.style.display = 'block'; // 显示匹配的内容
-            } else {
-                section.style.display = 'none'; // 隐藏不匹配的内容
-            }
-        });
     }
 
     // 回到顶部功能
