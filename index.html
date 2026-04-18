@@ -388,4 +388,125 @@
         <div class="about-content">
             <img src="IMG_7296.jpeg" alt="Maorong Xie" class="avatar-img">
             <div class="about-text">
-                <p>I am an active researcher in the field of blood
+                <p>I am an active researcher in the field of blood stem cell biology. My work primarily focuses on the expansion of human hematopoietic stem cells and understanding retrovirus behaviors. I am passionate about exploring innovative solutions in biomedical science.</p>
+                <a href="Maorong_Xie_CV.pdf" target="_blank" class="btn-cv">
+                    <i class="fas fa-file-pdf"></i> Download CV
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section reveal" id="research">
+        <h2>Research Interests</h2>
+        <p>My research is centered around stem cell biology and virology. I explore how hematopoietic stem cells can be manipulated for better therapeutic outcomes and study retroviruses for better understanding of their pathogenesis.</p>
+    </div>
+
+    <div class="section reveal" id="projects">
+        <h2>Projects</h2>
+        <div class="projects-wrapper">
+            <div class="project-card">
+                <h3>HIV-1 cell-to-cell transfer and viral dissemination in myeloid cells</h3>
+                <p>Most enveloped viruses encode viral fusion proteins to penetrate host cells via membrane fusion. Interestingly, many enveloped viruses, such as HIV-1 and SARS-CoV-2, can also use these viral fusion proteins to induce cell-cell fusion, both in vitro and in vivo, leading to the formation of syncytia or multinucleated giant cells (MGCs). Virus cell-to-cell spread through inducing cell-cell fusion may overcome entry and post-entry blocks in target cells and allow evasion of neutralizing antibodies.</p>
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-37936-9_14" target="_blank" class="project-link">Learn More</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>HIV-1 Vpr antagonises Interferon by suppressing STAT nuclear transport</h3>
+                <p>Viruses have evolved various strategies to evade the host's innate immune response, one of which is incorporating viral proteins into virions to antagonize these immune responses and support efficient viral replication. HCMV incorporates several viral proteins, such as pUL83 (pp65) and the UL26 tegument protein, to target various stages of the IFN signaling pathway, effectively dampening the host's antiviral response. Similarly, the Ebola virus incorporates viral proteins like VP35 and VP24 to strategically inhibit the host's IFN response. With respect to HIV-1, Vpr is the only accessory protein that is incorporated into virions. I found that HIV-1 Vpr can directly antagonise IFN by targeting the STAT proteins activated by IFN signaling.</p>
+                <a href="#" target="_blank" class="project-link">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section reveal" id="publications">
+        <h2>Key Publications</h2>
+        <ul>
+            <li><strong>Virus-Induced Cell Fusion and Syncytia Formation</strong> - <a href="https://link.springer.com/chapter/10.1007/978-3-031-37936-9_14" target="_blank">Read More</a></li>
+            <li><strong>Cell-to-cell spreading of HIV-1 in myeloid target cells escapes SAMHD1 restriction</strong> - <a href="https://journals.asm.org/doi/full/10.1128/mbio.02457-19" target="_blank">Read More</a></li>
+            <li><strong>Mechanisms for cell-to-cell transmission of HIV-1</strong> - <a href="https://www.frontiersin.org/journals/immunology/articles/10.3389/fimmu.2018.00260/full" target="_blank">Read More</a></li>
+            <li><strong>T cell-macrophage fusion triggers multinucleated giant cell formation for HIV-1 spreading</strong> - <a href="https://journals.asm.org/doi/full/10.1128/jvi.01237-17" target="_blank">Read More</a></li>
+        </ul>
+    </div>
+
+    <div class="section reveal" id="talks">
+        <h2>Talks & Conferences</h2>
+        <ul>
+            <li><strong>Advances in Experimental and Therapeutic Haematopoietic Stem Cell Expansion (HExaT), York, United Kingdom, April 2026</strong><br>
+                Modified cytokines as a new tool to direct hematopoietic stem cell fate</li>
+            <li><strong>EHA-SWG Scientific Workshop on From Aging Hematopoietic Stem Cells to Age-related Diseases: Opportunities for Intervention, Barcelona, Spain, November 2025</strong><br>
+                Modified cytokines as a new tool to direct hematopoietic stem cell fate</li>
+            <li><strong>Retroviruses 2023, Cold Spring Harbor, New York, May 2023</strong><br>
+                HIV-1 Vpr antagonises interferon by suppressing STAT nuclear transport.</li>
+            <li><strong>Evolving Concepts in HIV and Emerging Viral Infections, Miami Winter Symposium 2019</strong><br>
+                HIV-1 cell-to-cell fusion mediates productive infection of macrophages and dendritic cells by both macrophage- and non-macrophage-tropic viruses.</li>
+        </ul>
+    </div>
+
+    <div class="section reveal" id="news">
+        <h2>News and Updates</h2>
+        <ul>
+            <li><strong>May 2024</strong> - I moved to the Department of Biology at the University of York to develop novel molecules for ex vivo hematopoietic stem cell expansion in the laboratories of Professor David Kent and Professor Ian Hitchcock.</li>
+            <li><strong>CSHL Retroviruses 2023</strong> - May 2023 - Poster presentation at the International Retrovirus Conference 2023.</li>
+        </ul>
+    </div>
+
+    <div class="section reveal" id="contact">
+        <h2>Contact</h2>
+        <p>If you'd like to collaborate or have any inquiries, feel free to reach out:</p>
+        <p><a href="mailto:maorong.xie@york.ac.uk" class="project-link" style="display:inline-block; margin-top:10px;">Email: maorong.xie@york.ac.uk</a></p>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Maorong Xie. All rights reserved.</p>
+</footer>
+
+<button class="back-to-top" aria-label="Scroll to top" onclick="scrollToTop()">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script>
+    function toggleMenu() {
+        const menu = document.querySelector('.navbar-menu');
+        menu.classList.toggle('show');
+    }
+
+    function scrollToTop() {
+        window.scrollTo(0, 0);
+    }
+
+    window.addEventListener('scroll', () => {
+        const button = document.querySelector('.back-to-top');
+        const navbar = document.getElementById('navbar');
+        
+        if (window.scrollY > 300) {
+            button.classList.add('show');
+        } else {
+            button.classList.remove('show');
+        }
+
+        if (window.scrollY > 50) {
+            navbar.classList.remove('at-top');
+        } else {
+            navbar.classList.add('at-top');
+        }
+    });
+
+    function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 100;
+
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
+    window.addEventListener("scroll", reveal);
+    reveal(); 
+</script>
+
+</body>
+</html>
