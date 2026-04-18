@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal webpage of Maorong Xie, researcher in blood stem cell biology, HIV-1, and retroviruses.">
     <title>Maorong Xie - Personal Webpage</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style>
@@ -12,6 +13,10 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* 添加平滑滚动 */
         }
 
         body {
@@ -37,6 +42,7 @@
             justify-content: space-between;
             align-items: center;
             position: relative;
+            z-index: 1000; /* 确保导航栏在最上层 */
         }
 
         .navbar-brand {
@@ -60,12 +66,16 @@
 
         .navbar-menu a:hover {
             background-color: #333;
+            border-radius: 4px; /* 添加轻微圆角提升质感 */
         }
 
         .hamburger {
             display: none;
             font-size: 1.5em;
             cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
         }
 
         .navbar-icons {
@@ -104,6 +114,16 @@
             .hamburger {
                 display: block;
             }
+            
+            /* 移动端 About 居中适配 */
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .avatar-img {
+                margin-right: 0 !important;
+                margin-bottom: 20px;
+            }
         }
 
         header {
@@ -126,7 +146,12 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
-            z-index: -1;
+            z-index: 1; /* 调整层级 */
+        }
+
+        header h1, header p {
+            position: relative;
+            z-index: 2; /* 确保文字在遮罩层之上 */
         }
 
         header h1 {
@@ -168,13 +193,79 @@
 
         .section ul li {
             margin: 10px 0;
+            padding-left: 15px; /* 增加一点缩进 */
+            position: relative;
+        }
+
+        .section ul li::before {
+            content: "•"; /* 添加自定义项目符号 */
+            color: #1e90ff;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
         }
 
         .section ul li a {
             color: #1e90ff;
+            text-decoration: none;
         }
 
         .section ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* 提取的关于我样式 */
+        .about-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .avatar-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-right: 20px;
+            object-fit: cover; /* 防止图片拉伸变形 */
+            flex-shrink: 0; /* 防止屏幕变小时图片被挤压 */
+        }
+
+        /* 提取的项目卡片样式 */
+        .projects-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .project-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column; /* 让按钮可以沉底对齐 */
+        }
+
+        .project-card h3 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.2em;
+        }
+
+        .project-card p {
+            flex-grow: 1; /* 占用剩余空间 */
+            margin-bottom: 15px;
+        }
+
+        .project-link {
+            color: #1e90ff;
+            text-decoration: none;
+            font-weight: bold;
+            align-self: flex-start; /* 按钮靠左对齐 */
+        }
+
+        .project-link:hover {
             text-decoration: underline;
         }
 
@@ -203,7 +294,8 @@
             font-size: 24px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            display: none; /* 默认隐藏 */
+            display: none;
+            z-index: 999;
         }
 
         .back-to-top:hover {
@@ -213,15 +305,14 @@
 </head>
 <body>
 
-<!-- 导航栏 -->
 <nav class="navbar">
     <div class="navbar-brand">Maorong Xie</div>
-    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    <button class="hamburger" aria-label="Toggle navigation" onclick="toggleMenu()">&#9776;</button>
     <div class="navbar-menu">
         <a href="#about">About</a>
         <a href="#publications">Publications</a>
         <a href="#research">Research</a>
-        <a href="#projects">Projects</a> <!-- New Projects Link -->
+        <a href="#projects">Projects</a>
         <a href="#talks">Talks</a>
         <a href="#news">News</a>
         <a href="#contact">Contact</a>
@@ -233,48 +324,42 @@
     </div>
 </nav>
 
-<!-- 头部部分 -->
 <header>
     <h1>Maorong Xie</h1>
     <p>Researcher in Stem Cells and Retroviruses</p>
 </header>
 
-<!-- 内容部分 -->
 <div class="container">
-    <!-- 关于我部分 -->
     <div class="section" id="about">
         <h2>About Me</h2>
-        <div style="display: flex; align-items: center;">
-            <img src="IMG_7296.jpeg" alt="Maorong Xie" style="width: 150px; height: 150px; border-radius: 50%; margin-right: 20px;">
-            <p>I am an active researcher in the field of blood stem cell biology. My work primarily focuses on the expansion of human hematopoietic stem cells and understanding retrovirus behaviors. During my Master's studies (2012–2015), I worked on the antiviral restriction factor IFITM protein family in the context of HCMV infection at the Institut Pasteur of Shanghai under the supervision of Prof. Zhikang Qian. I completed my Ph.D. (2015–2019) in the laboratory of Prof. Serge Benichou at the University of Paris, specializing in microbiology. My research focused on HIV-1 cell-to-cell transfer and viral dissemination in myeloid cells. In 2019, I joined University College London (UCL) in the UK to study how virus evade innate immunity response with a little help from viral accessory proteins. My work led to the discovery that SARS-CoV-2 Orf6 and HIV-1 Vpr antagonize interferon responses by suppressing STAT nuclear transport. Additionally, I have been serving as a grant reviewer for the National Science Centre (NCN, Poland) since 2021.
-</p>
+        <div class="about-content">
+            <img src="IMG_7296.jpeg" alt="Maorong Xie" class="avatar-img">
+            <p>I am an active researcher in the field of blood stem cell biology. My work primarily focuses on the expansion of human hematopoietic stem cells and understanding retrovirus behaviors. I am passionate about exploring innovative solutions in biomedical science.</p>
         </div>
     </div>
 
-    <!-- 研究项目部分 -->
     <div class="section" id="research">
         <h2>Research Interests</h2>
         <p>My research is centered around stem cell biology and virology. I explore how hematopoietic stem cells can be manipulated for better therapeutic outcomes and study retroviruses for better understanding of their pathogenesis.</p>
     </div>
 
-    <!-- 项目展示部分 -->
     <div class="section" id="projects">
         <h2>Projects</h2>
-        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-            <!-- 项目卡片示例 -->
-            <div style="flex: 1; min-width: 250px; background-color: #e8f4ff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <div class="projects-wrapper">
+            <div class="project-card">
                 <h3>HIV-1 cell-to-cell transfer and viral dissemination in myeloid cells</h3>
                 <p>Most enveloped viruses encode viral fusion proteins to penetrate host cells via membrane fusion. Interestingly, many enveloped viruses, such as HIV-1 and SARS-CoV-2, can also use these viral fusion proteins to induce cell-cell fusion, both in vitro and in vivo, leading to the formation of syncytia or multinucleated giant cells (MGCs). Virus cell-to-cell spread through inducing cell-cell fusion may overcome entry and post-entry blocks in target cells and allow evasion of neutralizing antibodies.</p>
-                <a href="https://link.springer.com/chapter/10.1007/978-3-031-37936-9_14" target="_blank" style="color: #1e90ff;">Learn More</a>
-                <h3>HIV-1 Vpr antagonises Interferon by suppressing STAT nuclear transport.</h3>
-                <p>Viruses have evolved various strategies to evade the host's innate immune response, one of which is incorporating viral proteins into virions to antagonize these immune responses and support efficient viral replication. HCMV incorporates several viral proteins, such as pUL83 (pp65) and the UL26 tegument protein, to target various stages of the IFN signaling pathway, effectively dampening the host's antiviral response(Abate et al., 2004; Ciesla et al., 2024; Munger et al., 2006). Similarly, the Ebola virus incorporates viral proteins like VP35 and VP24 to strategically inhibit the host's IFN response(Messaoudi et al., 2015; Xu et al., 2014). With respect to HIV-1, Vpr is the only accessory protein that is incorporated into virions. I found that HIV-1 Vpr can directly antagonise IFN by targeting the STAT proteins activated by IFN signaling.</p>
-                <a href="link-to-project-details" target="_blank" style="color: #1e90ff;">Learn More</a>
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-37936-9_14" target="_blank" class="project-link">Learn More</a>
             </div>
-            <!-- 可以根据需要添加更多项目卡片 -->
+            
+            <div class="project-card">
+                <h3>HIV-1 Vpr antagonises Interferon by suppressing STAT nuclear transport</h3>
+                <p>Viruses have evolved various strategies to evade the host's innate immune response, one of which is incorporating viral proteins into virions to antagonize these immune responses and support efficient viral replication. HCMV incorporates several viral proteins, such as pUL83 (pp65) and the UL26 tegument protein, to target various stages of the IFN signaling pathway, effectively dampening the host's antiviral response. Similarly, the Ebola virus incorporates viral proteins like VP35 and VP24 to strategically inhibit the host's IFN response. With respect to HIV-1, Vpr is the only accessory protein that is incorporated into virions. I found that HIV-1 Vpr can directly antagonise IFN by targeting the STAT proteins activated by IFN signaling.</p>
+                <a href="#" target="_blank" class="project-link">Learn More</a>
+            </div>
         </div>
     </div>
 
-    <!-- 发表论文部分 -->
     <div class="section" id="publications">
         <h2>Key Publications</h2>
         <ul>
@@ -285,7 +370,6 @@
         </ul>
     </div>
 
-    <!-- 讲座和会议部分 -->
     <div class="section" id="talks">
         <h2>Talks & Conferences</h2>
         <ul>
@@ -296,7 +380,6 @@
         </ul>
     </div>
 
-    <!-- 新闻和更新部分 -->
     <div class="section" id="news">
         <h2>News and Updates</h2>
         <ul>
@@ -305,25 +388,21 @@
         </ul>
     </div>
 
-    <!-- 联系部分 -->
     <div class="section" id="contact">
         <h2>Contact</h2>
         <p>If you'd like to collaborate or have any inquiries, feel free to reach out:</p>
-        <p><a href="mailto:maorong.xie@york.ac.uk">maorong.xie@york.ac.uk</a></p>
+        <p><a href="mailto:maorong.xie@york.ac.uk" class="project-link">maorong.xie@york.ac.uk</a></p>
     </div>
 </div>
 
-<!-- 页脚 -->
 <footer>
-    <p>© 2024 Maorong Xie. All rights reserved.</p>
+    <p>© 2026 Maorong Xie. All rights reserved.</p>
 </footer>
 
-<!-- 回到顶部按钮 -->
-<button class="back-to-top" onclick="scrollToTop()">
+<button class="back-to-top" aria-label="Scroll to top" onclick="scrollToTop()">
     <i class="fas fa-chevron-up"></i>
 </button>
 
-<!-- JavaScript -->
 <script>
     // 折叠导航栏切换功能
     function toggleMenu() {
@@ -331,16 +410,16 @@
         menu.classList.toggle('show');
     }
 
-    // 回到顶部功能
+    // 回到顶部功能 (现在由 CSS scroll-behavior 处理平滑滚动)
     function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo(0, 0);
     }
 
     // 显示/隐藏回到顶部按钮
     window.addEventListener('scroll', () => {
         const button = document.querySelector('.back-to-top');
         if (window.scrollY > 300) {
-            button.style.display = 'block';
+            button.style.display = 'flex'; // 修正：从 block 改为 flex 以保持图标居中
         } else {
             button.style.display = 'none';
         }
