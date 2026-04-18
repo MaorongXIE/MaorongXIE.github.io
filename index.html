@@ -16,38 +16,52 @@
         }
 
         html {
-            scroll-behavior: smooth; /* 添加平滑滚动 */
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            background-color: #f8f9fa;
             color: #333;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         .container {
             width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 1000px;
+            margin: -40px auto 0;
             padding: 20px;
+            position: relative;
+            z-index: 10;
         }
 
-        /* 导航栏样式 */
+        /* 导航栏样式 - 磨砂玻璃效果 */
         .navbar {
-            background-color: #1e90ff;
+            background-color: rgba(30, 144, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             color: #fff;
-            padding: 10px 20px;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
-            z-index: 1000; /* 确保导航栏在最上层 */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.at-top {
+            box-shadow: none;
+            background-color: rgba(30, 144, 255, 0.95);
         }
 
         .navbar-brand {
             font-size: 1.5em;
-            font-weight: bold;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
 
         .navbar-menu {
@@ -61,12 +75,13 @@
             padding: 8px 15px;
             margin: 0 5px;
             font-weight: 500;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            border-radius: 20px;
         }
 
         .navbar-menu a:hover {
-            background-color: #333;
-            border-radius: 4px; /* 添加轻微圆角提升质感 */
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
 
         .hamburger {
@@ -86,49 +101,41 @@
         .navbar-icons a {
             color: #fff;
             margin-left: 10px;
-            font-size: 1.2em;
-            transition: color 0.3s ease;
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
         }
 
         .navbar-icons a:hover {
-            color: #333;
+            transform: scale(1.2) rotate(5deg);
         }
 
         @media (max-width: 768px) {
+            .container { margin-top: 20px; }
             .navbar-menu {
                 display: none;
                 flex-direction: column;
-                background-color: #1e90ff;
+                background-color: rgba(30, 144, 255, 0.95);
+                backdrop-filter: blur(10px);
                 position: absolute;
-                top: 50px;
+                top: 60px;
                 right: 0;
                 width: 100%;
-                text-align: right;
-                padding: 10px 0;
-            }
-
-            .navbar-menu.show {
-                display: flex;
-            }
-
-            .hamburger {
-                display: block;
-            }
-            
-            /* 移动端 About 居中适配 */
-            .about-content {
-                flex-direction: column;
                 text-align: center;
+                padding: 20px 0;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             }
-            .avatar-img {
-                margin-right: 0 !important;
-                margin-bottom: 20px;
-            }
+            .navbar-menu.show { display: flex; }
+            .hamburger { display: block; }
+            .about-content { flex-direction: column; text-align: center; }
+            .about-text { display: flex; flex-direction: column; align-items: center; } /* 移动端文字和按钮居中 */
+            .avatar-img { margin-right: 0 !important; margin-bottom: 20px; }
         }
 
+        /* 头部部分 - 渐变遮罩 */
         header {
-            height: 50vh;
+            height: 60vh;
             background: url('896.png') no-repeat center center/cover;
+            background-attachment: fixed;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -136,6 +143,7 @@
             text-align: center;
             color: white;
             position: relative;
+            padding-top: 60px;
         }
 
         header::before {
@@ -145,167 +153,212 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1; /* 调整层级 */
+            background: linear-gradient(135deg, rgba(10, 30, 80, 0.8) 0%, rgba(0, 0, 0, 0.4) 100%);
+            z-index: 1;
         }
 
         header h1, header p {
             position: relative;
-            z-index: 2; /* 确保文字在遮罩层之上 */
+            z-index: 2;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
         }
 
         header h1 {
-            font-size: 2.5em;
-            font-weight: 700;
+            font-size: 3.5em;
+            font-weight: 800;
             margin: 0;
+            letter-spacing: 2px;
         }
 
         header p {
-            font-size: 1.2em;
+            font-size: 1.5em;
             font-weight: 300;
             margin: 10px 0;
+            opacity: 0.9;
         }
 
+        /* 板块样式 & 悬停上浮动效 */
         .section {
-            padding: 40px 20px;
+            padding: 40px;
             background-color: #fff;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
 
         .section h2 {
-            font-size: 2em;
+            font-size: 2.2em;
             color: #1e90ff;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #e8f4ff;
+            padding-bottom: 10px;
+            display: inline-block;
         }
 
-        .section p,
-        .section ul {
-            font-size: 1em;
+        .section p, .section ul {
+            font-size: 1.05em;
             color: #555;
         }
 
-        .section ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
+        .section ul { list-style-type: none; padding: 0; }
         .section ul li {
-            margin: 10px 0;
-            padding-left: 15px; /* 增加一点缩进 */
+            margin: 15px 0;
+            padding-left: 20px;
             position: relative;
+            line-height: 1.8;
         }
-
         .section ul li::before {
-            content: "•"; /* 添加自定义项目符号 */
+            content: "\f105";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
             color: #1e90ff;
             position: absolute;
             left: 0;
-            font-weight: bold;
         }
 
-        .section ul li a {
-            color: #1e90ff;
+        .section ul li a { color: #1e90ff; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .section ul li a:hover { color: #0056b3; text-decoration: underline; }
+
+        /* 关于我样式优化 */
+        .about-content { display: flex; align-items: center; }
+        .about-text { flex: 1; }
+        .avatar-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin-right: 30px;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 5px solid #e8f4ff;
+            box-shadow: 0 8px 16px rgba(30,144,255,0.2);
+        }
+        
+        /* CV 下载按钮样式 */
+        .btn-cv {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #1e90ff, #0056b3);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 30px;
+            box-shadow: 0 6px 15px rgba(30, 144, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-cv:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 144, 255, 0.5);
+            color: white;
             text-decoration: none;
         }
 
-        .section ul li a:hover {
-            text-decoration: underline;
-        }
-
-        /* 提取的关于我样式 */
-        .about-content {
-            display: flex;
-            align-items: center;
-        }
-
-        .avatar-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-right: 20px;
-            object-fit: cover; /* 防止图片拉伸变形 */
-            flex-shrink: 0; /* 防止屏幕变小时图片被挤压 */
-        }
-
-        /* 提取的项目卡片样式 */
-        .projects-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
+        /* 项目卡片优化 */
+        .projects-wrapper { display: flex; flex-wrap: wrap; gap: 25px; }
         .project-card {
             flex: 1;
-            min-width: 250px;
-            background-color: #e8f4ff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            min-width: 280px;
+            background: linear-gradient(to bottom right, #ffffff, #f0f8ff);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #e1efff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
             display: flex;
-            flex-direction: column; /* 让按钮可以沉底对齐 */
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(30, 144, 255, 0.15);
+            border-color: #1e90ff;
         }
 
-        .project-card h3 {
-            margin-bottom: 15px;
-            color: #333;
-            font-size: 1.2em;
-        }
-
-        .project-card p {
-            flex-grow: 1; /* 占用剩余空间 */
-            margin-bottom: 15px;
-        }
-
+        .project-card h3 { margin-bottom: 15px; color: #222; font-size: 1.3em; line-height: 1.4; }
+        .project-card p { flex-grow: 1; margin-bottom: 20px; color: #555; }
+        
         .project-link {
-            color: #1e90ff;
+            color: #fff;
+            background-color: #1e90ff;
             text-decoration: none;
             font-weight: bold;
-            align-self: flex-start; /* 按钮靠左对齐 */
+            align-self: flex-start;
+            padding: 8px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(30, 144, 255, 0.3);
         }
-
         .project-link:hover {
-            text-decoration: underline;
+            background-color: #006bce;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(30, 144, 255, 0.4);
+            color: white;
+            text-decoration: none;
         }
 
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            background-color: #111;
-            color: #fff;
-            margin-top: 40px;
+        /* 滚动渐显动画 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* 回到顶部按钮 */
+        footer { text-align: center; padding: 30px 0; background-color: #111; color: #aaa; margin-top: 40px; }
+        footer p { margin: 0; }
+
+        /* 回到顶部按钮优化 */
         .back-to-top {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 30px;
+            right: 30px;
             background-color: #1e90ff;
             color: #fff;
             border: none;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 20px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-            display: none;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
             z-index: 999;
+            box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
 
         .back-to-top:hover {
-            background-color: #555;
+            background-color: #0056b3;
+            transform: translateY(-5px) scale(1.1);
         }
+        
+        html { scroll-padding-top: 80px; }
     </style>
 </head>
 <body>
 
-<nav class="navbar">
+<nav class="navbar at-top" id="navbar">
     <div class="navbar-brand">Maorong Xie</div>
     <button class="hamburger" aria-label="Toggle navigation" onclick="toggleMenu()">&#9776;</button>
     <div class="navbar-menu">
@@ -330,105 +383,9 @@
 </header>
 
 <div class="container">
-    <div class="section" id="about">
+    <div class="section reveal" id="about">
         <h2>About Me</h2>
         <div class="about-content">
             <img src="IMG_7296.jpeg" alt="Maorong Xie" class="avatar-img">
-            <p>I am an active researcher in the field of blood stem cell biology. My work primarily focuses on the expansion of human hematopoietic stem cells and understanding retrovirus behaviors. I am passionate about exploring innovative solutions in biomedical science.</p>
-        </div>
-    </div>
-
-    <div class="section" id="research">
-        <h2>Research Interests</h2>
-        <p>My research is centered around stem cell biology and virology. I explore how hematopoietic stem cells can be manipulated for better therapeutic outcomes and study retroviruses for better understanding of their pathogenesis.</p>
-    </div>
-
-    <div class="section" id="projects">
-        <h2>Projects</h2>
-        <div class="projects-wrapper">
-            <div class="project-card">
-                <h3>HIV-1 cell-to-cell transfer and viral dissemination in myeloid cells</h3>
-                <p>Most enveloped viruses encode viral fusion proteins to penetrate host cells via membrane fusion. Interestingly, many enveloped viruses, such as HIV-1 and SARS-CoV-2, can also use these viral fusion proteins to induce cell-cell fusion, both in vitro and in vivo, leading to the formation of syncytia or multinucleated giant cells (MGCs). Virus cell-to-cell spread through inducing cell-cell fusion may overcome entry and post-entry blocks in target cells and allow evasion of neutralizing antibodies.</p>
-                <a href="https://link.springer.com/chapter/10.1007/978-3-031-37936-9_14" target="_blank" class="project-link">Learn More</a>
-            </div>
-            
-            <div class="project-card">
-                <h3>HIV-1 Vpr antagonises Interferon by suppressing STAT nuclear transport</h3>
-                <p>Viruses have evolved various strategies to evade the host's innate immune response, one of which is incorporating viral proteins into virions to antagonize these immune responses and support efficient viral replication. HCMV incorporates several viral proteins, such as pUL83 (pp65) and the UL26 tegument protein, to target various stages of the IFN signaling pathway, effectively dampening the host's antiviral response. Similarly, the Ebola virus incorporates viral proteins like VP35 and VP24 to strategically inhibit the host's IFN response. With respect to HIV-1, Vpr is the only accessory protein that is incorporated into virions. I found that HIV-1 Vpr can directly antagonise IFN by targeting the STAT proteins activated by IFN signaling.</p>
-                <a href="#" target="_blank" class="project-link">Learn More</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="section" id="publications">
-        <h2>Key Publications</h2>
-        <ul>
-            <li><strong>Virus-Induced Cell Fusion and Syncytia Formation</strong> - <a href="https://link.springer.com/chapter/10.1007/978-3-031-37936-9_14" target="_blank">Read More</a></li>
-            <li><strong>Cell-to-cell spreading of HIV-1 in myeloid target cells escapes SAMHD1 restriction</strong> - <a href="https://journals.asm.org/doi/full/10.1128/mbio.02457-19" target="_blank">Read More</a></li>
-            <li><strong>Mechanisms for cell-to-cell transmission of HIV-1</strong> - <a href="https://www.frontiersin.org/journals/immunology/articles/10.3389/fimmu.2018.00260/full" target="_blank">Read More</a></li>
-            <li><strong>T cell-macrophage fusion triggers multinucleated giant cell formation for HIV-1 spreading</strong> - <a href="https://journals.asm.org/doi/full/10.1128/jvi.01237-17" target="_blank">Read More</a></li>
-        </ul>
-    </div>
-
-    <div class="section" id="talks">
-        <h2>Talks & Conferences</h2>
-        <ul>
-            <li><strong>Advances in Experimental and Therapeutic Haematopoietic Stem Cell Expansion (HExaT), York, United Kingdom, April 2026</strong><br>
-                Modified cytokines as a new tool to direct hematopoietic stem cell fate</li>
-            <li><strong>EHA-SWG Scientific Workshop on From Aging Hematopoietic Stem Cells to Age-related Diseases: Opportunities for Intervention, Barcelona, Spain, November 2025</strong><br>
-                Modified cytokines as a new tool to direct hematopoietic stem cell fate</li>
-            <li><strong>Retroviruses 2023, Cold Spring Harbor, New York, May 2023</strong><br>
-                HIV-1 Vpr antagonises interferon by suppressing STAT nuclear transport.</li>
-            <li><strong>Evolving Concepts in HIV and Emerging Viral Infections, Miami Winter Symposium 2019</strong><br>
-                HIV-1 cell-to-cell fusion mediates productive infection of macrophages and dendritic cells by both macrophage- and non-macrophage-tropic viruses.</li>
-        </ul>
-    </div>
-
-    <div class="section" id="news">
-        <h2>News and Updates</h2>
-        <ul>
-            <li><strong>May 2024</strong> - I moved to the Department of Biology at the University of York to develop novel molecules for ex vivo hematopoietic stem cell expansion in the laboratories of Professor David Kent and Professor Ian Hitchcock.</li>
-            <li><strong>CSHL Retroviruses 2023</strong> - May 2023 - Poster presentation at the International Retrovirus Conference 2023.</li>
-        </ul>
-    </div>
-
-    <div class="section" id="contact">
-        <h2>Contact</h2>
-        <p>If you'd like to collaborate or have any inquiries, feel free to reach out:</p>
-        <p><a href="mailto:maorong.xie@york.ac.uk" class="project-link">maorong.xie@york.ac.uk</a></p>
-    </div>
-</div>
-
-<footer>
-    <p>© 2026 Maorong Xie. All rights reserved.</p>
-</footer>
-
-<button class="back-to-top" aria-label="Scroll to top" onclick="scrollToTop()">
-    <i class="fas fa-chevron-up"></i>
-</button>
-
-<script>
-    // 折叠导航栏切换功能
-    function toggleMenu() {
-        const menu = document.querySelector('.navbar-menu');
-        menu.classList.toggle('show');
-    }
-
-    // 回到顶部功能 (现在由 CSS scroll-behavior 处理平滑滚动)
-    function scrollToTop() {
-        window.scrollTo(0, 0);
-    }
-
-    // 显示/隐藏回到顶部按钮
-    window.addEventListener('scroll', () => {
-        const button = document.querySelector('.back-to-top');
-        if (window.scrollY > 300) {
-            button.style.display = 'flex'; // 修正：从 block 改为 flex 以保持图标居中
-        } else {
-            button.style.display = 'none';
-        }
-    });
-</script>
-
-</body>
-</html>
+            <div class="about-text">
+                <p>I am an active researcher in the field of blood
