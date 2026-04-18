@@ -155,4 +155,327 @@
             background-color: #fff;
             margin-bottom: 30px;
             border-radius: 12px;
-            box-shadow:
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            font-size: 2em;
+            color: #1e90ff;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #e8f4ff;
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+
+        /* 列表样式 */
+        .section ul { list-style-type: none; padding: 0; }
+        .section ul li {
+            margin: 15px 0;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+            color: #555;
+        }
+        .section ul li::before {
+            content: "\f105";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: #1e90ff;
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+        .section ul li a { color: #1e90ff; text-decoration: none; font-weight: 500; }
+        .section ul li a:hover { text-decoration: underline; }
+
+        /* 关于我布局 */
+        .about-content { 
+            display: flex; 
+            align-items: center; 
+            gap: 30px; 
+        }
+        .about-text { flex: 1; color: #555; font-size: 1.05em; }
+        .avatar-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #e8f4ff;
+            box-shadow: 0 4px 10px rgba(30,144,255,0.2);
+            flex-shrink: 0;
+        }
+
+        /* CV 按钮 */
+        .btn-cv {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 10px 22px;
+            background-color: #1e90ff;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        .btn-cv:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
+        }
+
+        /* 项目卡片 */
+        .projects-wrapper { 
+            display: grid; /* 改用 grid 布局，更稳定 */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px; 
+        }
+        .project-card {
+            background: #fdfdfd;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card h3 { color: #222; font-size: 1.2em; margin-bottom: 12px; }
+        .project-card p { color: #666; flex-grow: 1; margin-bottom: 15px; font-size: 0.95em; }
+        .project-link {
+            color: #1e90ff;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+        .project-link:hover { text-decoration: underline; }
+
+        /* 稳定版渐显动画核心 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer { text-align: center; padding: 20px 0; background-color: #222; color: #888; }
+
+        /* 回到顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1e90ff;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+
+        /* --- 手机端绝杀适配方案 --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2em; }
+            header p { font-size: 1.1em; padding: 0 15px; }
+            .section { padding: 25px 20px; }
+            
+            /* 导航栏适配 */
+            .navbar { background-color: rgba(30, 144, 255, 0.95); }
+            .navbar.at-top { background-color: rgba(30, 144, 255, 0.95); } /* 手机端始终保持底色 */
+            .navbar-menu {
+                display: none;
+                flex-direction: column;
+                background-color: rgba(30, 144, 255, 0.98);
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                padding: 15px 0;
+            }
+            .navbar-menu.show { display: flex; }
+            .navbar-menu a { margin: 10px 0; }
+            .hamburger { display: block; }
+            
+            /* 关于我适配 - 头像居中，文字左对齐 */
+            .about-content { flex-direction: column; text-align: center; gap: 15px; }
+            .avatar-img { width: 120px; height: 120px; }
+            .about-text p { text-align: left; } /* 保持段落易读性 */
+            
+            .projects-wrapper { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar at-top" id="navbar">
+    <div class="navbar-brand">Maorong Xie</div>
+    <button class="hamburger" aria-label="Toggle navigation" onclick="toggleMenu()">&#9776;</button>
+    <div class="navbar-menu">
+        <a href="#about" onclick="toggleMenu()">About</a>
+        <a href="#publications" onclick="toggleMenu()">Publications</a>
+        <a href="#research" onclick="toggleMenu()">Research</a>
+        <a href="#projects" onclick="toggleMenu()">Projects</a>
+        <a href="#talks" onclick="toggleMenu()">Talks</a>
+        <a href="#news" onclick="toggleMenu()">News</a>
+        <a href="#contact" onclick="toggleMenu()">Contact</a>
+    </div>
+    <div class="navbar-icons">
+        <a href="https://scholar.google.com/citations?user=zwRy9XMAAAAJ&hl=en" target="_blank" title="Google Scholar">
+            <i class="fas fa-graduation-cap"></i>
+        </a>
+    </div>
+</nav>
+
+<header>
+    <h1>Maorong Xie</h1>
+    <p>Researcher in Stem Cells and Retroviruses</p>
+</header>
+
+<div class="container">
+    <div class="section reveal" id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <img src="IMG_7296.jpeg" alt="Maorong Xie" class="avatar-img">
+            <div class="about-text">
+                <p>I am an active researcher in the field of blood stem cell biology. My work primarily focuses on the expansion of human hematopoietic stem cells and understanding retrovirus behaviors. I am passionate about exploring innovative solutions in biomedical science.</p>
+                <a href="Maorong_Xie_CV.pdf" target="_blank" class="btn-cv">
+                    <i class="fas fa-file-pdf"></i> Download CV
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section reveal" id="research">
+        <h2>Research Interests</h2>
+        <p>My research is centered around stem cell biology and virology. I explore how hematopoietic stem cells can be manipulated for better therapeutic outcomes and study retroviruses for better understanding of their pathogenesis.</p>
+    </div>
+
+    <div class="section reveal" id="projects">
+        <h2>Projects</h2>
+        <div class="projects-wrapper">
+            <div class="project-card">
+                <h3>HIV-1 cell-to-cell transfer and viral dissemination in myeloid cells</h3>
+                <p>Most enveloped viruses encode viral fusion proteins to penetrate host cells via membrane fusion. Interestingly, many enveloped viruses, such as HIV-1 and SARS-CoV-2, can also use these viral fusion proteins to induce cell-cell fusion, both in vitro and in vivo, leading to the formation of syncytia or multinucleated giant cells (MGCs). Virus cell-to-cell spread through inducing cell-cell fusion may overcome entry and post-entry blocks in target cells and allow evasion of neutralizing antibodies.</p>
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-37936-9_14" target="_blank" class="project-link">Learn More →</a>
+            </div>
+            <div class="project-card">
+                <h3>HIV-1 Vpr antagonises Interferon by suppressing STAT nuclear transport</h3>
+                <p>Viruses have evolved various strategies to evade the host's innate immune response, one of which is incorporating viral proteins into virions to antagonize these immune responses and support efficient viral replication. HCMV incorporates several viral proteins, such as pUL83 (pp65) and the UL26 tegument protein, to target various stages of the IFN signaling pathway, effectively dampening the host's antiviral response. Similarly, the Ebola virus incorporates viral proteins like VP35 and VP24. With respect to HIV-1, Vpr is the only accessory protein incorporated into virions. I found that HIV-1 Vpr can directly antagonise IFN by targeting the STAT proteins.</p>
+                <a href="#" target="_blank" class="project-link">Learn More →</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section reveal" id="publications">
+        <h2>Key Publications</h2>
+        <ul>
+            <li><strong>Virus-Induced Cell Fusion and Syncytia Formation</strong> - <a href="https://link.springer.com/chapter/10.1007/978-3-031-37936-9_14" target="_blank">Read More</a></li>
+            <li><strong>Cell-to-cell spreading of HIV-1 in myeloid target cells escapes SAMHD1 restriction</strong> - <a href="https://journals.asm.org/doi/full/10.1128/mbio.02457-19" target="_blank">Read More</a></li>
+            <li><strong>Mechanisms for cell-to-cell transmission of HIV-1</strong> - <a href="https://www.frontiersin.org/journals/immunology/articles/10.3389/fimmu.2018.00260/full" target="_blank">Read More</a></li>
+            <li><strong>T cell-macrophage fusion triggers multinucleated giant cell formation for HIV-1 spreading</strong> - <a href="https://journals.asm.org/doi/full/10.1128/jvi.01237-17" target="_blank">Read More</a></li>
+        </ul>
+    </div>
+
+    <div class="section reveal" id="talks">
+        <h2>Talks & Conferences</h2>
+        <ul>
+            <li><strong>Advances in Experimental and Therapeutic Haematopoietic Stem Cell Expansion (HExaT), York, United Kingdom, April 2026</strong><br>Modified cytokines as a new tool to direct hematopoietic stem cell fate</li>
+            <li><strong>EHA-SWG Scientific Workshop on From Aging Hematopoietic Stem Cells to Age-related Diseases, Barcelona, Spain, November 2025</strong><br>Modified cytokines as a new tool to direct hematopoietic stem cell fate</li>
+            <li><strong>Retroviruses 2023, Cold Spring Harbor, New York, May 2023</strong><br>HIV-1 Vpr antagonises interferon by suppressing STAT nuclear transport.</li>
+            <li><strong>Evolving Concepts in HIV and Emerging Viral Infections, Miami Winter Symposium 2019</strong><br>HIV-1 cell-to-cell fusion mediates productive infection of macrophages and dendritic cells by both macrophage- and non-macrophage-tropic viruses.</li>
+        </ul>
+    </div>
+
+    <div class="section reveal" id="news">
+        <h2>News and Updates</h2>
+        <ul>
+            <li><strong>May 2024</strong> - I moved to the Department of Biology at the University of York to develop novel molecules for ex vivo hematopoietic stem cell expansion in the laboratories of Professor David Kent and Professor Ian Hitchcock.</li>
+            <li><strong>CSHL Retroviruses 2023</strong> - May 2023 - Poster presentation at the International Retrovirus Conference 2023.</li>
+        </ul>
+    </div>
+
+    <div class="section reveal" id="contact">
+        <h2>Contact</h2>
+        <p>If you'd like to collaborate or have any inquiries, feel free to reach out:</p>
+        <p style="margin-top: 10px;"><a href="mailto:maorong.xie@york.ac.uk" class="project-link" style="font-size: 1.1em;"><i class="fas fa-envelope"></i> maorong.xie@york.ac.uk</a></p>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Maorong Xie. All rights reserved.</p>
+</footer>
+
+<button class="back-to-top" aria-label="Scroll to top" onclick="window.scrollTo(0, 0);">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script>
+    // 菜单切换 (增加了点击链接后自动收起菜单的功能)
+    function toggleMenu() {
+        const menu = document.querySelector('.navbar-menu');
+        if (window.innerWidth <= 768) {
+            menu.classList.toggle('show');
+        }
+    }
+
+    // 导航栏背景和回到顶部按钮监听
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        const topBtn = document.querySelector('.back-to-top');
+        
+        if (window.scrollY > 50) {
+            navbar.classList.remove('at-top');
+        } else {
+            navbar.classList.add('at-top');
+        }
+
+        if (window.scrollY > 300) {
+            topBtn.classList.add('show');
+        } else {
+            topBtn.classList.remove('show');
+        }
+    });
+
+    // 稳定、高性能的滚动渐显动画 (Intersection Observer)
+    document.addEventListener("DOMContentLoaded", function() {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // 元素出现 10% 时触发动画
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // 动画执行一次后取消监听，节省性能
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(section => {
+            observer.observe(section);
+        });
+    });
+</script>
+
+</body>
+</html>
