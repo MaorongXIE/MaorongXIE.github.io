@@ -1,6 +1,6 @@
 ## 🔬 Built-in Data Analysis Tools
 
-Besides the website template, this repository also includes lightweight Python scripts designed to streamline routine laboratory data analysis. 
+Besides the website template, this unique repository also includes lightweight Python scripts designed to streamline routine laboratory data analysis. 
 
 **Included Script: `cytokine_expansion_analyzer.py`**
 * **Purpose:** Automates the calculation and visualization of cell expansion metrics, specifically optimized for tracking hematopoietic stem cell growth kinetics under various modified cytokine conditions.
